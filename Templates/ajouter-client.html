@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter Client</title>
+    <!--Styles gracieusete de gpt pour le fun-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-size: 16px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!--Formulaire pour ajouter un client tout est "required" pour eviter les erreures-->
+    <h1>Formulaire d'Ajout de Client</h1>
+    <form action="/add_client" method="POST">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" required><br>
+
+        <label for="prenom">Prénom:</label>
+        <input type="text" id="prenom" name="prenom" required><br>
+
+        <label for="numero_telephone">Numéro de téléphone:</label>
+        <input type="text" id="numero_telephone" name="numero_telephone" required><br>
+
+        <label for="adresse">Adresse:</label>
+        <input type="text" id="adresse" name="adresse" required><br>
+
+        <button type="submit">Ajouter Client</button>
+    </form>
+    <a href="/">Retour à l'Accueil</a>
+</body>
+</html>

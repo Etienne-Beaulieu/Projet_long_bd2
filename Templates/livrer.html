@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Livrer les commandes</title>
+    <!--Styles gracieusete de gpt pour le fun-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        td {
+            background-color: white;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #FF5733;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #FF4511;
+        }
+        form {
+            display: inline;
+        }
+        p {
+            text-align: center;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Commandes en attente</h1>
+
+    <!--If pour verifier si il y a des commandes-->
+    {% if not commandes %}
+        <p>Aucune commande en attente. <a href="{{ url_for('index') }}">Retour à l'Accueil</a></p>
+    {% else %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Pizza</th>
+                    <th>Livrer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--For pour que chaque commande apparaisse-->
+                {% for commande in commandes %}
+                <tr>
+                    <!--nom, prenom-->
+                    <td>{{ commande[1] }} {{ commande[2] }}</td>
+                    <!--croute, sauce et ingredient1,2,3,4-->
+                    <td>
+                        {{ commande[4] }} / {{ commande[5] }} / 
+                        {{ commande[6] }} / {{ commande[7] }} / 
+                        {{ commande[8] }} / {{ commande[9] }}
+                    </td>
+                    <td>
+                        <form action="{{ url_for('livrer') }}" method="POST">
+                            <input type="hidden" name="commande_id" value="{{ commande[0] }}">
+                            <button type="submit">Livrer</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/">Retour à l'Accueil</a>
+    {% endif %}
+</body>
+</html>

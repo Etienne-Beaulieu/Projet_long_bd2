@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter une commande</title>
+    <!--Styles gracieusete de gpt pour le fun-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-size: 16px;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ajouter une commande</h1>
+
+    <!--Formulaire qui recois les infos de la bd et prend le titre de chaque ingredient-->
+    <form action="{{ url_for('ajouter_commande') }}" method="POST">
+        <label for="client">Client:</label>
+        <select name="client" required>
+            <option value="">Sélectionnez un client</option>
+            {% for client in clients %}
+            <!--ici on affiche les options en gardent les id [0] pour le formulaire-->
+                <option value="{{ client[0] }}">{{ client[1] }} {{ client[2] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="croute">Croûte:</label>
+        <select name="croute" required>
+            <option value="">Sélectionnez une croûte</option>
+            {% for croute in croute_options %}
+                <option value="{{ croute[0] }}">{{ croute[1] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="sauce">Sauce:</label>
+        <select name="sauce" required>
+            <option value="">Sélectionnez une sauce</option>
+            {% for sauce in sauce_options %}
+                <option value="{{ sauce[0] }}">{{ sauce[1] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="garniture1">Garniture 1:</label>
+        <select name="garniture1" required>
+            <option value="">Sélectionnez une garniture</option>
+            {% for garniture in garnitures %}
+                <option value="{{ garniture[0] }}">{{ garniture[1] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="garniture2">Garniture 2:</label>
+        <select name="garniture2" required>
+            <option value="">Sélectionnez une garniture</option>
+            {% for garniture in garnitures %}
+                <option value="{{ garniture[0] }}">{{ garniture[1] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="garniture3">Garniture 3:</label>
+        <select name="garniture3" required>
+            <option value="">Sélectionnez une garniture</option>
+            {% for garniture in garnitures %}
+                <option value="{{ garniture[0] }}">{{ garniture[1] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="garniture4">Garniture 4:</label>
+        <select name="garniture4" required>
+            <option value="">Sélectionnez une garniture</option>
+            {% for garniture in garnitures %}
+                <option value="{{ garniture[0] }}">{{ garniture[1] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit">Ajouter la commande</button>
+    </form>
+    <a href="/">Retour à l'Accueil</a>
+</body>
+</html>
